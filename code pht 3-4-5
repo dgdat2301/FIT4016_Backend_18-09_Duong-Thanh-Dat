@@ -1,0 +1,807 @@
+//todo 3.1
+using System;
+
+namespace GradeClassification
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Nhập điểm
+            Console.Write("Nhập điểm (0-100): ");
+            int score = Convert.ToInt32(Console.ReadLine());
+            
+            // Phân loại điểm
+            string grade = "";
+            string evaluation = "";
+            
+            if (score >= 90 && score <= 100)
+            {
+                grade = "A";
+                evaluation = "Xuất sắc";
+            }
+            else if (score >= 80 && score <= 89)
+            {
+                grade = "B";
+                evaluation = "Khá";
+            }
+            else if (score >= 70 && score <= 79)
+            {
+                grade = "C";
+                evaluation = "Trung bình";
+            }
+            else if (score >= 60 && score <= 69)
+            {
+                grade = "D";
+                evaluation = "Yếu";
+            }
+            else if (score >= 0 && score < 60)
+            {
+                grade = "F";
+                evaluation = "Không đạt";
+            }
+            else
+            {
+                grade = "Không hợp lệ";
+                evaluation = "Điểm phải từ 0-100";
+            }
+            
+            // In kết quả
+            Console.WriteLine($"Điểm: {score}");
+            Console.WriteLine($"Xếp loại: {grade}");
+            Console.WriteLine($"Đánh giá: {evaluation}");
+        }
+    }
+}
+//todo 3.2
+using System;
+
+namespace DayOfWeek
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Nhập số ngày
+            Console.Write("Nhập số ngày (1-7): ");
+            int day = Convert.ToInt32(Console.ReadLine());
+            
+            // Dùng switch để in tên ngày
+            string dayName;
+            
+            switch (day)
+            {
+                case 1:
+                    dayName = "Thứ Hai";
+                    break;
+                case 2:
+                    dayName = "Thứ Ba";
+                    break;
+                case 3:
+                    dayName = "Thứ Tư";
+                    break;
+                case 4:
+                    dayName = "Thứ Năm";
+                    break;
+                case 5:
+                    dayName = "Thứ Sáu";
+                    break;
+                case 6:
+                    dayName = "Thứ Bảy";
+                    break;
+                case 7:
+                    dayName = "Chủ Nhật";
+                    break;
+                default:
+                    dayName = "Ngày không hợp lệ";
+                    break;
+            }
+            
+            Console.WriteLine($"Số ngày: {day}");
+            Console.WriteLine($"Kết quả: {dayName}");
+        }
+    }
+}
+//todo 3.3
+using System;
+
+namespace SumCalculation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Tính tổng các số từ 1 đến 100
+            int sum = 0;
+            
+            for (int i = 1; i <= 100; i++)
+            {
+                sum += i;
+            }
+            
+            // In kết quả
+            Console.WriteLine($"Tổng các số từ 1 đến 100: {sum}");
+            
+            // Công thức toán học để kiểm tra
+            int sumByFormula = 100 * (100 + 1) / 2;
+            Console.WriteLine($"Kiểm tra bằng công thức: {sumByFormula}");
+        }
+    }
+}
+//todo 3.4
+using System;
+
+namespace GuessNumber
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int secretNumber = 50;
+            bool isCorrect = false;
+            int guessCount = 0;
+            int maxGuesses = 3;
+            
+            Console.WriteLine("Chào mừng đến với trò chơi ĐOÁN SỐ!");
+            Console.WriteLine($"Bạn có {maxGuesses} lần đoán. Số bí mật nằm trong khoảng 1-100.");
+            
+            while (!isCorrect && guessCount < maxGuesses)
+            {
+                guessCount++;
+                Console.Write($"\nLần đoán thứ {guessCount}: ");
+                
+                // Giả lập 3 lần đoán: 40, 60, 50
+                int guess;
+                if (guessCount == 1)
+                    guess = 40;
+                else if (guessCount == 2)
+                    guess = 60;
+                else
+                    guess = 50;
+                
+                Console.WriteLine(guess); // In ra số đã chọn
+                
+                if (guess == secretNumber)
+                {
+                    Console.WriteLine("🎉 Chính xác!");
+                    Console.WriteLine($"Bạn đã đoán đúng sau {guessCount} lần!");
+                    isCorrect = true;
+                }
+                else if (guess < secretNumber)
+                {
+                    Console.WriteLine("⬆️ Quá thấp! Thử số lớn hơn.");
+                }
+                else
+                {
+                    Console.WriteLine("⬇️ Quá cao! Thử số nhỏ hơn.");
+                }
+            }
+            
+            if (!isCorrect)
+            {
+                Console.WriteLine("\n💀 Hết lượt đoán!");
+                Console.WriteLine($"Số bí mật là: {secretNumber}");
+            }
+        }
+    }
+}
+//todo 3.5
+using System;
+
+namespace ForeachExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Tạo mảng tên các bạn
+            string[] friends = { "Mai", "Bình", "Chi", "Danh" };
+
+            // In danh sách bạn bè dùng foreach
+            Console.WriteLine("📋 DANH SÁCH BẠN BÈ");
+            Console.WriteLine(new string('=', 20));
+            
+            int index = 1;
+            foreach (string friend in friends)
+            {
+                Console.WriteLine($"{index}. {friend}");
+                index++;
+            }
+        }
+    }
+}
+//todo 3.6
+using System;
+
+namespace BreakContinue
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🔢 IN CÁC SỐ LẺ TỪ 1 ĐẾN 20 (DÙNG CONTINUE)");
+            Console.WriteLine(new string('=', 45));
+            
+            // In các số lẻ từ 1 đến 20 (dùng continue)
+            for (int i = 1; i <= 20; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    continue;
+                }
+                Console.Write($"{i} ");
+            }
+            
+            Console.WriteLine("\n");
+            Console.WriteLine(new string('-', 50));
+            Console.WriteLine("\n🔍 TÌM SỐ 7 TRONG MẢNG (DÙNG BREAK)");
+            Console.WriteLine(new string('=', 45));
+            
+            // Tìm số 7 trong mảng [2, 5, 7, 1, 9, 7, 3]
+            int[] numbers = { 2, 5, 7, 1, 9, 7, 3 };
+            
+            Console.WriteLine("Mảng số: [" + string.Join(", ", numbers) + "]");
+            Console.WriteLine("Bắt đầu tìm kiếm...\n");
+            
+            bool found = false;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine($"   Đang kiểm tra vị trí {i}: số {numbers[i]}");
+                
+                if (numbers[i] == 7)
+                {
+                    Console.WriteLine($"\n✅ Tìm thấy số 7 tại vị trí {i}!");
+                    Console.WriteLine("   Dừng tìm kiếm...");
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (!found)
+            {
+                Console.WriteLine("❌ Không tìm thấy số 7 trong mảng");
+            }
+        }
+    }
+}
+//todo 4.1
+using System;
+
+namespace BasicMethods
+{
+    class Program
+    {
+        static int Add(int a, int b)
+        {
+            return a + b;
+        }
+        
+        static double Multiply(double x, double y)
+        {
+            return x * y;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🔢 PHƯƠNG THỨC TÍNH TOÁN CƠ BẢN");
+            Console.WriteLine(new string('=', 40));
+            
+            int sum = Add(15, 27);
+            Console.WriteLine($"Tổng của 15 và 27 là: {sum}");
+            
+            double product = Multiply(4.5, 3.2);
+            Console.WriteLine($"Tích của 4.5 và 3.2 là: {product:F2}");
+            
+            double product2 = Multiply(7, 8.5);
+            Console.WriteLine($"Tích của 7 và 8.5 là: {product2:F2}");
+            
+            Console.WriteLine(new string('-', 40));
+            Console.WriteLine("Kết hợp phương thức:");
+            
+            int a = 10;
+            int b = 20;
+            double x = 2.5;
+            double y = 4.0;
+            
+            int sumResult = Add(a, b);
+            double multiplyResult = Multiply(x, y);
+            
+            Console.WriteLine($"{a} + {b} = {sumResult}");
+            Console.WriteLine($"{x} × {y} = {multiplyResult:F2}");
+        }
+    }
+}
+//todo 4.2
+using System;
+
+namespace VoidMethods
+{
+    class Program
+    {
+        static void PrintBox(string text)
+        {
+            int boxLength = text.Length + 8;
+            
+            Console.WriteLine(new string('*', boxLength));
+            Console.WriteLine($"*   {text}   *");
+            Console.WriteLine(new string('*', boxLength));
+            Console.WriteLine();
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🎁 PHƯƠNG THỨC VOID - IN HỘP TRANG TRÍ");
+            Console.WriteLine(new string('=', 40));
+            
+            Console.WriteLine("Hộp trang trí cơ bản:");
+            PrintBox("Hello");
+            PrintBox("Welcome");
+            PrintBox("C# Programming");
+            
+            Console.WriteLine(new string('=', 40));
+            Console.WriteLine("\nHộp trang trí đặc biệt:");
+            
+            PrintBox("Chúc mừng!");
+            PrintBox("Thành công");
+            PrintBox("Happy Coding!");
+        }
+    }
+}
+//todo 4.3
+using System;
+
+namespace ArrayMethods
+{
+    class Program
+    {
+        static int SumArray(int[] numbers)
+        {
+            int sum = 0;
+            foreach (int num in numbers)
+            {
+                sum += num;
+            }
+            return sum;
+        }
+        
+        static int FindMax(int[] numbers)
+        {
+            if (numbers.Length == 0)
+            {
+                return 0;
+            }
+            
+            int max = numbers[0];
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                if (numbers[i] > max)
+                {
+                    max = numbers[i];
+                }
+            }
+            return max;
+        }
+        
+        static void Main(string[] args)
+        {
+            int[] scores = { 85, 92, 78, 90, 88 };
+            
+            Console.WriteLine("📊 PHƯƠNG THỨC VỚI MẢNG");
+            Console.WriteLine(new string('=', 40));
+            
+            Console.WriteLine("Mảng điểm số: [" + string.Join(", ", scores) + "]");
+            Console.WriteLine();
+            
+            int total = SumArray(scores);
+            Console.WriteLine($"📈 Tổng các phần tử: {total}");
+            
+            int maxScore = FindMax(scores);
+            Console.WriteLine($"🏆 Điểm cao nhất: {maxScore}");
+            
+            // Thêm tính trung bình
+            double average = (double)total / scores.Length;
+            Console.WriteLine($"📊 Điểm trung bình: {average:F2}");
+        }
+    }
+}
+//todo 4.4
+using System;
+
+namespace MethodOverloading
+{
+    class Program
+    {
+        static void Print(int x)
+        {
+            Console.WriteLine($"📊 Số nguyên: {x}");
+        }
+        
+        static void Print(string text)
+        {
+            Console.WriteLine($"📝 Chuỗi: \"{text}\"");
+        }
+        
+        static int Add(int a, int b)
+        {
+            int result = a + b;
+            Console.WriteLine($"🧮 {a} + {b} = {result} (số nguyên)");
+            return result;
+        }
+        
+        static double Add(double a, double b)
+        {
+            double result = a + b;
+            Console.WriteLine($"🧮 {a:F2} + {b:F2} = {result:F2} (số thực)");
+            return result;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🎯 NẠP CHỒNG PHƯƠNG THỨC (OVERLOADING)");
+            Console.WriteLine(new string('=', 50));
+            
+            Console.WriteLine("\n1️⃣ PHƯƠNG THỨC PRINT:");
+            Console.WriteLine(new string('-', 30));
+            
+            Console.WriteLine("Gọi Print(42):");
+            Print(42);
+            
+            Console.WriteLine("\nGọi Print(\"Hello C#\"):");
+            Print("Hello C#");
+            
+            Console.WriteLine("\n" + new string('=', 50));
+            Console.WriteLine("\n2️⃣ PHƯƠNG THỨC ADD:");
+            Console.WriteLine(new string('-', 30));
+            
+            Console.WriteLine("Gọi Add(10, 20):");
+            int intResult = Add(10, 20);
+            
+            Console.WriteLine("\nGọi Add(3.14, 2.86):");
+            double doubleResult = Add(3.14, 2.86);
+            
+            // Thêm ví dụ
+            Console.WriteLine("\n3️⃣ VÍ DỤ KHÁC:");
+            Console.WriteLine(new string('-', 30));
+            
+            Print(100);
+            Print("Nạp chồng phương thức");
+            Add(25, 75);
+            Add(5.5, 4.5);
+        }
+    }
+}
+//todo 4.5
+using System;
+
+namespace Recursion
+{
+    class Program
+    {
+        static long Factorial(int n)
+        {
+            if (n == 0 || n == 1)
+            {
+                Console.WriteLine($"  Điều kiện dừng: {n}! = 1");
+                return 1;
+            }
+            
+            Console.WriteLine($"  Tính {n}! = {n} × ({n-1}!)");
+            long result = n * Factorial(n - 1);
+            Console.WriteLine($"  Đã tính xong: {n}! = {result}");
+            return result;
+        }
+        
+        // Phiên bản đơn giản không có debug
+        static long FactorialSimple(int n)
+        {
+            return n <= 1 ? 1 : n * FactorialSimple(n - 1);
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🌀 ĐỆ QUY - TÍNH GIAI THỪA");
+            Console.WriteLine(new string('=', 40));
+            
+            Console.WriteLine("\n1️⃣ Tính 5! (giai thừa của 5):");
+            Console.WriteLine(new string('-', 30));
+            
+            long factorial5 = Factorial(5);
+            Console.WriteLine($"\n✅ Kết quả: 5! = {factorial5}");
+            
+            Console.WriteLine("\n" + new string('=', 40));
+            Console.WriteLine("\n2️⃣ Tính 10! (giai thừa của 10):");
+            Console.WriteLine(new string('-', 30));
+            
+            long factorial10 = FactorialSimple(10);
+            Console.WriteLine($"\n✅ Kết quả: 10! = {factorial10:N0}");
+            
+            Console.WriteLine("\n" + new string('=', 40));
+            Console.WriteLine("\n3️⃣ CÁC GIÁ TRỊ GIAI THỪA KHÁC:");
+            Console.WriteLine(new string('-', 30));
+            
+            for (int i = 0; i <= 6; i++)
+            {
+                Console.WriteLine($"  {i}! = {FactorialSimple(i)}");
+            }
+        }
+    }
+}
+//todo 5.1
+using System;
+
+namespace BasicClass
+{
+    class Student
+    {
+        public string StudentId;
+        public string Name;
+        public double GPA;
+        
+        public void Display()
+        {
+            Console.WriteLine($"🎓 ID: {StudentId}, Tên: {Name}, Điểm: {GPA:F2}");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("📚 DANH SÁCH SINH VIÊN");
+            Console.WriteLine(new string('=', 40));
+            
+            Student student1 = new Student();
+            Student student2 = new Student();
+            
+            student1.StudentId = "SV001";
+            student1.Name = "Nguyễn Văn A";
+            student1.GPA = 3.5;
+            
+            student2.StudentId = "SV002";
+            student2.Name = "Trần Thị B";
+            student2.GPA = 3.8;
+            
+            student1.Display();
+            student2.Display();
+            
+            // Thêm sinh viên thứ 3
+            Student student3 = new Student 
+            { 
+                StudentId = "SV003", 
+                Name = "Lê Văn C", 
+                GPA = 3.2 
+            };
+            student3.Display();
+        }
+    }
+}
+//todo 5.2
+using System;
+
+namespace Constructor
+{
+    class Product
+    {
+        public string ProductId;
+        public string ProductName;
+        public decimal Price;
+        
+        // Constructor
+        public Product(string productId, string productName, decimal price)
+        {
+            ProductId = productId;
+            ProductName = productName;
+            Price = price;
+        }
+        
+        // Thêm phương thức hiển thị
+        public void Display()
+        {
+            Console.WriteLine($"🛒 Mã: {ProductId} | Tên: {ProductName} | Giá: {Price:N0} VND");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🛍️ DANH SÁCH SẢN PHẨM");
+            Console.WriteLine(new string('=', 50));
+            
+            Product laptop = new Product("P001", "Laptop Dell XPS", 25000000);
+            Product phone = new Product("P002", "iPhone 15 Pro", 28000000);
+            Product tablet = new Product("P003", "iPad Pro", 18000000);
+            
+            laptop.Display();
+            phone.Display();
+            tablet.Display();
+        }
+    }
+}
+//todo 5.3
+using System;
+
+namespace Encapsulation
+{
+    class BankAccount
+    {
+        private decimal _balance;
+        private string _accountNumber;
+        
+        public decimal Balance
+        {
+            get { return _balance; }
+        }
+        
+        public string AccountNumber
+        {
+            get { return _accountNumber; }
+        }
+        
+        // Constructor
+        public BankAccount(string accountNumber, decimal initialBalance)
+        {
+            _accountNumber = accountNumber;
+            _balance = initialBalance;
+        }
+        
+        public void Deposit(decimal amount)
+        {
+            if (amount > 0)
+            {
+                _balance += amount;
+                Console.WriteLine($"✅ Đã gửi: {amount:N0} VND");
+                Console.WriteLine($"💰 Số dư mới: {_balance:N0} VND");
+            }
+            else
+            {
+                Console.WriteLine("❌ Số tiền gửi phải lớn hơn 0");
+            }
+        }
+        
+        public void Withdraw(decimal amount)
+        {
+            if (amount <= 0)
+            {
+                Console.WriteLine("❌ Số tiền rút phải lớn hơn 0");
+            }
+            else if (amount > _balance)
+            {
+                Console.WriteLine($"❌ Không đủ tiền. Số dư hiện tại: {_balance:N0} VND");
+            }
+            else
+            {
+                _balance -= amount;
+                Console.WriteLine($"✅ Đã rút: {amount:N0} VND");
+                Console.WriteLine($"💰 Số dư mới: {_balance:N0} VND");
+            }
+        }
+        
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"🏦 Số tài khoản: {_accountNumber}");
+            Console.WriteLine($"💰 Số dư: {_balance:N0} VND");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🏦 QUẢN LÝ TÀI KHOẢN NGÂN HÀNG");
+            Console.WriteLine(new string('=', 40));
+            
+            BankAccount account = new BankAccount("123456789", 1000000);
+            account.DisplayInfo();
+            
+            Console.WriteLine("\n--- Giao dịch ---");
+            account.Deposit(500000);
+            account.Withdraw(200000);
+            account.Withdraw(2000000); // Thử rút quá số dư
+            
+            Console.WriteLine("\n--- Thông tin cuối cùng ---");
+            account.DisplayInfo();
+        }
+    }
+}
+//todo 5.4
+using System;
+
+namespace Inheritance
+{
+    class Animal
+    {
+        public string Name;
+        public int Age;
+        
+        public Animal(string name, int age)
+        {
+            Name = name;
+            Age = age;
+        }
+        
+        public virtual void MakeSound()
+        {
+            Console.WriteLine($"{Name} (tuổi: {Age}) kêu: Animal makes a sound");
+        }
+        
+        public void Eat()
+        {
+            Console.WriteLine($"{Name} đang ăn...");
+        }
+    }
+    
+    class Dog : Animal
+    {
+        public string Breed;
+        
+        public Dog(string name, int age, string breed) : base(name, age)
+        {
+            Breed = breed;
+        }
+        
+        public override void MakeSound()
+        {
+            Console.WriteLine($"{Name} ({Breed}, tuổi: {Age}) sủa: Woof! Woof!");
+        }
+        
+        public void WagTail()
+        {
+            Console.WriteLine($"{Name} đang vẫy đuôi...");
+        }
+    }
+    
+    class Cat : Animal
+    {
+        public Cat(string name, int age) : base(name, age) { }
+        
+        public override void MakeSound()
+        {
+            Console.WriteLine($"{Name} (tuổi: {Age}) kêu: Meow! Meow!");
+        }
+        
+        public void ClimbTree()
+        {
+            Console.WriteLine($"{Name} đang trèo cây...");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("🐾 MÔ PHỎNG ĐỘNG VẬT");
+            Console.WriteLine(new string('=', 30));
+            
+            Animal genericAnimal = new Animal("Động vật chung", 3);
+            Dog myDog = new Dog("Buddy", 2, "Golden Retriever");
+            Cat myCat = new Cat("Kitty", 1);
+            
+            Console.WriteLine("\n=== HÀNH ĐỘNG CỦA ĐỘNG VẬT ===");
+            
+            Console.WriteLine("\n1. Động vật chung:");
+            genericAnimal.MakeSound();
+            genericAnimal.Eat();
+            
+            Console.WriteLine("\n2. Chó:");
+            myDog.MakeSound();
+            myDog.Eat();
+            myDog.WagTail();
+            
+            Console.WriteLine("\n3. Mèo:");
+            myCat.MakeSound();
+            myCat.Eat();
+            myCat.ClimbTree();
+            
+            Console.WriteLine("\n=== POLYMORPHISM DEMO ===");
+            Console.WriteLine("Gọi MakeSound() thông qua tham chiếu Animal:");
+            
+            Animal[] animals = { genericAnimal, myDog, myCat };
+            
+            foreach (Animal animal in animals)
+            {
+                animal.MakeSound(); // Đa hình - mỗi loại kêu khác nhau
+            }
+        }
+    }
+}
